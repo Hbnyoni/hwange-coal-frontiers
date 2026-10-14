@@ -35,13 +35,37 @@ Requirements: Python 3.13 with `earthengine-api`, `pandas`, `numpy`, `statsmodel
 
 `01_feasibility.py` is the initial Hwange feasibility check and is kept for transparency.
 
-## Data sources and licences
+## Where to get the data
 
-Inputs keep their own licences; please cite the original sources: Sentinel-5P TROPOMI NO2 and SO2 (Copernicus), ERA5-Land (Copernicus Climate Change Service), MODIS MOD11A2 and FIRMS (NASA), WorldPop, the Malaria Atlas Project travel time to health care, GHAP PM2.5 (Wei et al. 2023), the Global Power Plant Database v1.3.0 (WRI), geoBoundaries gbOpen (Runfola et al. 2020), World Bank World Development Indicators and Natural Earth.
+Derived datasets produced by this study are in `results/`; each GitHub release is archived on Zenodo with a DOI
+(see "Citation" below). All inputs are public and are reacquired by the scripts:
+
+| Input | Access | Licence / citation |
+|---|---|---|
+| Sentinel-5P TROPOMI tropospheric NO2, offline L3 | Earth Engine `COPERNICUS/S5P/OFFL/L3_NO2`, https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_OFFL_L3_NO2 | Copernicus open licence |
+| Sentinel-5P TROPOMI SO2, offline L3 | Earth Engine `COPERNICUS/S5P/OFFL/L3_SO2`, https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S5P_OFFL_L3_SO2 | Copernicus open licence |
+| ERA5-Land daily and monthly aggregates | Earth Engine `ECMWF/ERA5_LAND/DAILY_AGGR`, `ECMWF/ERA5_LAND/MONTHLY_AGGR`, https://developers.google.com/earth-engine/datasets/catalog/ECMWF_ERA5_LAND_DAILY_AGGR | Copernicus C3S licence; Muñoz-Sabater et al. 2021 |
+| MODIS land surface temperature, MOD11A2 v6.1 | Earth Engine `MODIS/061/MOD11A2`, https://developers.google.com/earth-engine/datasets/catalog/MODIS_061_MOD11A2 | NASA open data; Wan 2014 |
+| FIRMS active fires | Earth Engine `FIRMS`, https://developers.google.com/earth-engine/datasets/catalog/FIRMS | NASA open data |
+| WorldPop 2020 population and age-sex structure | Earth Engine `WorldPop/GP/100m/pop`, `WorldPop/GP/100m/pop_age_sex`, https://www.worldpop.org | CC BY 4.0; Tatem 2017 |
+| Travel time to health care, 2019 | Earth Engine `projects/malariaatlasproject/assets/accessibility/accessibility_to_healthcare/2019`, https://malariaatlas.org | CC BY 4.0; Weiss et al. 2020 |
+| GHAP PM2.5 (1 km, 2017 to 2022) | Earth Engine Community Catalog, https://gee-community-catalog.org/projects/ghap/ | Wei et al. 2023 |
+| Global Power Plant Database v1.3.0 | Earth Engine `WRI/GPPD/power_plants`, https://datasets.wri.org/dataset/globalpowerplantdatabase | CC BY 4.0 |
+| geoBoundaries gbOpen ADM0 and ADM1, commit 9469f09 | https://github.com/wmgeolab/geoBoundaries/tree/9469f09 (fetched by `analysis/08_fetch_boundaries.py`) | Runfola et al. 2020 |
+| World Bank crude death rates | https://data.worldbank.org/indicator/SP.DYN.CDRT.IN (copy in `data/`) | CC BY 4.0 |
+| Natural Earth physical layers | https://www.naturalearthdata.com (downloaded by cartopy) | Public domain |
+
+Earth Engine access needs a free registered account and Cloud project, passed to the scripts with `--project`.
 
 ## Licence
 
 Code is released under the MIT licence (`LICENSE`). Derived datasets are released under CC BY 4.0 (`LICENSE-DATA`).
+
+## Citation
+
+Please cite the archived release (Zenodo DOI, issued when the GitHub release is published) and the associated article.
+Zenodo archives each GitHub release of this repository automatically; the concept DOI always resolves to the latest
+version.
 
 ## Contact
 
