@@ -1,6 +1,6 @@
 # Shifting coal frontiers: compound air pollution and heat risk around sub-Saharan Africa's coal power plants
 
-Code and derived data for *Shifting coal frontiers: compound air pollution and heat risk around sub-Saharan Africa's coal power plants and the 2023 Hwange expansion in Zimbabwe* (Nyoni, Moyo, Chinwadzimba, Sibanda, Tigere; manuscript under review).
+Code and derived data for *Shifting coal frontiers: compound air pollution and heat risk around Zimbabwe Zambia and South Africa coal power plants and the 2023 Hwange expansion in Zimbabwe* 
 
 The study screens 25 coal power plants in sub-Saharan Africa with open satellite and population data. For the 17 utility-scale plants with a detectable NO2 signal it combines hazard (TROPOMI NO2 and SO2 excess, GHAP PM2.5, ERA5-Land hot days and MODIS land surface heat), exposure (WorldPop population within 10, 25 and 50 km) and vulnerability (children, older adults and travel time to health care) into a compound risk index, and evaluates the 2023 commissioning of Hwange Units 7 and 8 in Zimbabwe with an interrupted time series and a placebo-in-space difference in differences. No survey, clinical or individual-level data are used.
 
