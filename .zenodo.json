@@ -1,0 +1,53 @@
+{
+  "title": "Shifting coal frontiers: compound air pollution and heat risk around sub-Saharan African coal power plants: code and derived data",
+  "upload_type": "software",
+  "license": "MIT",
+  "access_right": "open",
+  "version": "1.0.0",
+  "description": "Python code and derived datasets for a satellite-based assessment of compound air pollution and heat risk around 25 coal power plants in sub-Saharan Africa, with a quasi-experimental evaluation of the 2023 Hwange Thermal Power Station expansion in Zimbabwe. Inputs are public TROPOMI, ERA5-Land, MODIS, WorldPop, Malaria Atlas Project, GHAP, Global Power Plant Database, geoBoundaries and World Bank data; raster extracts are reacquired with the supplied code.",
+  "creators": [
+    {
+      "name": "Nyoni, Handsome Bongani",
+      "affiliation": "Midlands State University; University of Cape Town"
+    },
+    {
+      "name": "Moyo, Perez Livias",
+      "affiliation": "National University of Science and Technology, Zimbabwe"
+    },
+    {
+      "name": "Chinwadzimba, Zororo",
+      "affiliation": "Centre for Sexual Health and HIV AIDS Research (CeSHHAR)"
+    },
+    {
+      "name": "Sibanda, Rutendo",
+      "affiliation": "Centre for Sexual Health and HIV AIDS Research (CeSHHAR)"
+    },
+    {
+      "name": "Tigere, Daniel",
+      "affiliation": "Shurugwi District Medical Office"
+    }
+  ],
+  "keywords": [
+    "coal power",
+    "NO2",
+    "SO2",
+    "extreme heat",
+    "compound risk",
+    "exposome",
+    "TROPOMI",
+    "Zimbabwe",
+    "Hwange"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.1126/sciadv.aax9800",
+      "relation": "references",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.23342801",
+      "relation": "isSupplementedBy",
+      "scheme": "doi"
+    }
+  ]
+}

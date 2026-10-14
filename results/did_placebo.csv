@@ -1,0 +1,35 @@
+outcome,id,name,estimate,rank_desc,n_plants,permutation_p
+no2_logratio,P00,Lethabo,0.0664,3.0,17,0.1765
+no2_logratio,P12,Hwange Coal Power Plant Zimbabwe,0.2233,1.0,17,0.0588
+no2_logratio,P07,Matla,-0.0543,13.0,17,0.7647
+no2_logratio,P09,Tutuka,-0.1044,17.0,17,1.0
+no2_logratio,P03,Hendrina,-0.0398,12.0,17,0.7059
+no2_logratio,P11,Majuba,0.0071,6.0,17,0.3529
+no2_logratio,P08,Kriel,-0.0265,9.0,17,0.5294
+no2_logratio,P04,Komati,-0.009,8.0,17,0.4706
+no2_logratio,P05,Kendal,-0.0389,10.0,17,0.5882
+no2_logratio,P24,Medupi,-0.0607,14.0,17,0.8235
+no2_logratio,P02,Arnot,-0.0394,11.0,17,0.6471
+no2_logratio,P01,Matimba,-0.0622,15.0,17,0.8824
+no2_logratio,P10,Camden,0.0028,7.0,17,0.4118
+no2_logratio,P06,Duvha,0.0342,4.0,17,0.2353
+no2_logratio,P14,Kusile Power Station Unit 1,0.1928,2.0,17,0.1176
+no2_logratio,P16,Morpule,0.0097,5.0,17,0.2941
+no2_logratio,P23,Grootvlei,-0.1012,16.0,17,0.9412
+so2_excess,P00,Lethabo,56.3765,4.0,17,0.2353
+so2_excess,P12,Hwange Coal Power Plant Zimbabwe,118.3074,1.0,17,0.0588
+so2_excess,P07,Matla,-69.1678,14.0,17,0.8235
+so2_excess,P09,Tutuka,-21.1718,12.0,17,0.7059
+so2_excess,P03,Hendrina,28.0481,8.0,17,0.4706
+so2_excess,P11,Majuba,91.9765,2.0,17,0.1176
+so2_excess,P08,Kriel,-60.368,13.0,17,0.7647
+so2_excess,P04,Komati,35.6654,7.0,17,0.4118
+so2_excess,P05,Kendal,-70.2604,15.0,17,0.8824
+so2_excess,P24,Medupi,-183.9712,17.0,17,1.0
+so2_excess,P02,Arnot,25.0593,10.0,17,0.5882
+so2_excess,P01,Matimba,-170.0746,16.0,17,0.9412
+so2_excess,P10,Camden,45.6614,5.0,17,0.2941
+so2_excess,P06,Duvha,16.0927,11.0,17,0.6471
+so2_excess,P14,Kusile Power Station Unit 1,91.6398,3.0,17,0.1765
+so2_excess,P16,Morpule,38.9887,6.0,17,0.3529
+so2_excess,P23,Grootvlei,27.1981,9.0,17,0.5294

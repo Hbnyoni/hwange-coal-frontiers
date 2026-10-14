@@ -1,0 +1,13 @@
+model,outcome,n_months,pre_mean,post_effect,ci_low,ci_high,p,pct_change
+primary,no2_excess,95,11.7782,9.3806,6.8531,11.9081,0.0,79.6436
+with linear trend,no2_excess,95,11.7782,12.4562,8.052,16.8603,0.0,105.7563
+transition counted as post,no2_excess,99,11.7782,8.7865,5.9638,11.6093,0.0,74.5999
+placebo break 2020-07,no2_excess,56,13.843,-3.7022,-5.9246,-1.4798,0.0011,-26.7442
+placebo break 2021-07,no2_excess,56,12.2059,-1.3168,-4.1042,1.4706,0.3545,-10.788
+placebo break 2022-01,no2_excess,56,12.4423,-1.8077,-4.2634,0.648,0.1491,-14.5289
+primary,so2_excess,91,60.8939,62.9683,37.5548,88.3819,0.0,103.4066
+with linear trend,so2_excess,91,60.8939,64.6883,21.5,107.8766,0.0033,106.2311
+transition counted as post,so2_excess,95,60.8939,58.3721,32.5717,84.1725,0.0,95.8586
+placebo break 2020-07,so2_excess,52,70.2639,-16.3199,-37.8732,5.2335,0.1378,-23.2265
+placebo break 2021-07,so2_excess,52,62.5581,-3.5536,-30.1881,23.0809,0.7937,-5.6805
+placebo break 2022-01,so2_excess,52,65.5574,-15.6184,-35.9494,4.7125,0.1322,-23.8241

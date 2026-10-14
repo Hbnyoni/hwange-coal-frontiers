@@ -1,0 +1,25 @@
+cap_year,capacitymw,comm_year,country,country_lg,fuel1,fuel2,fuel3,fuel4,gppd_idnr,gwh_2013,gwh_2014,gwh_2015,gwh_2016,gwh_estimt,latitude,longitude,name,owner,source,src_latlon,url
+0,3708.0,1985.0,ZAF,South Africa,Coal,,,,WRI1000128,0.0,0.0,0.0,0.0,22015.716259788114,-26.7403,27.975,Lethabo,Eskom,Eskom,WRI,http://www.eskom.co.za/OurCompany/PhotoGallery/Pages/Eskom_Power_Stations.aspx
+0,3990.0,0.0,ZAF,South Africa,Coal,,,,WRI1000130,0.0,0.0,0.0,0.0,23690.05066789498,-23.6678,27.6128,Matimba,Eskom,Eskom,WRI,http://www.eskom.co.za/OurCompany/PhotoGallery/Pages/Eskom_Power_Stations.aspx
+0,2100.0,1975.0,ZAF,South Africa,Coal,,,,WRI1000117,0.0,0.0,0.0,0.0,12468.447719944726,-25.9444,29.7917,Arnot,Eskom,Eskom,WRI,http://www.eskom.co.za/Whatweredoing/ElectricityGeneration/PowerStations/Pages/Arnot_Power_Station.aspx
+0,2000.0,1976.0,ZAF,South Africa,Coal,,,,WRI1000124,0.0,0.0,0.0,0.0,11874.712114233072,-26.0314,29.6014,Hendrina,Eskom,Eskom,WRI,http://www.eskom.co.za/OurCompany/PhotoGallery/Pages/Eskom_Power_Stations.aspx
+0,1000.0,0.0,ZAF,South Africa,Coal,,,,WRI1000126,0.0,0.0,0.0,0.0,5937.356057116536,-26.0899,29.4725,Komati,Eskom,Eskom,WRI,http://www.eskom.co.za/Whatweredoing/ElectricityGeneration/PowerStations/Pages/Komati_Power_Station.aspx
+0,4116.0,1993.0,ZAF,South Africa,Coal,,,,WRI1000125,0.0,0.0,0.0,0.0,24438.157531091663,-26.088,28.9689,Kendal,Eskom,Eskom,WRI,http://www.eskom.co.za/OurCompany/PhotoGallery/Pages/Eskom_Power_Stations.aspx
+0,3600.0,1984.0,ZAF,South Africa,Coal,,,,WRI1000119,0.0,0.0,0.0,0.0,21374.48180561953,-25.9595,29.3409,Duvha,Eskom,Eskom,WRI,http://www.eskom.co.za/OurCompany/PhotoGallery/Pages/Eskom_Power_Stations.aspx
+0,3600.0,0.0,ZAF,South Africa,Coal,,,,WRI1000131,0.0,0.0,0.0,0.0,21374.48180561953,-26.2804,29.1423,Matla,Eskom,Eskom,WRI,http://www.eskom.co.za/OurCompany/PhotoGallery/Pages/Eskom_Power_Stations.aspx
+0,3600.0,1979.0,ZAF,South Africa,Coal,,,,WRI1000127,0.0,0.0,0.0,0.0,21374.48180561953,-26.254,29.1801,Kriel,Eskom,Eskom,WRI,http://www.eskom.co.za/OurCompany/PhotoGallery/Pages/Eskom_Power_Stations.aspx
+0,3654.0,0.0,ZAF,South Africa,Coal,,,,WRI1000135,0.0,0.0,0.0,0.0,21695.099032703823,-26.7767,29.3527,Tutuka,Eskom,Eskom,WRI,http://www.eskom.co.za/sites/heritage/Pages/TUTUKA-POWER-STATION.aspx
+0,1600.0,1967.0,ZAF,South Africa,Coal,,,,WRI1000118,0.0,0.0,0.0,0.0,9499.769691386458,-26.6201,30.0911,Camden,Eskom,Eskom,WRI,http://www.eskom.co.za/sites/heritage/Pages/Camden.aspx
+0,4110.0,0.0,ZAF,South Africa,Coal,,,,WRI1000129,0.0,0.0,0.0,0.0,24402.533394748963,-27.0955,29.7706,Majuba,Eskom,Eskom,WRI,http://www.eskom.co.za/OurCompany/PhotoGallery/Pages/Eskom_Power_Stations.aspx
+0,920.0,0.0,ZWE,Zimbabwe,Coal,,,,GEODB0040404,0.0,0.0,0.0,0.0,4397.0,-18.3835,26.47,Hwange Coal Power Plant Zimbabwe,,GEODB,GEODB,http://globalenergyobservatory.org
+0,300.0,0.0,ZMB,Zambia,Coal,,,,WRI1022376,0.0,0.0,0.0,0.0,0.0,-17.3529,27.187,Maamba,Maamba Collieries Limited,Nava Bharat,WRI,http://www.nbventures.com/power.htm
+0,800.0,2017.0,ZAF,South Africa,Coal,,,,WRI1061281,0.0,0.0,0.0,0.0,4749.884845693229,-25.9194,28.9156,Kusile Power Station Unit 1,Eskom,Power Technology,WRI,http://www.power-technology.com/projects/kusilepowerstation/
+0,120.0,0.0,NAM,Namibia,Coal,,,,WRI1023134,0.0,0.0,0.0,0.0,0.0,-22.514,17.0789,Van Eck,,African Development Bank Group,Power Africa,http://powerafrica.opendataforafrica.org
+0,732.0,0.0,BWA,Botswana,Coal,,,,WRI1023017,0.0,0.0,0.0,0.0,2220.530831099196,-22.5223,27.0491,Morpule,,African Development Bank Group,Power Africa,http://powerafrica.opendataforafrica.org
+0,14.0,0.0,BWA,Botswana,Coal,,,,WRI1023018,0.0,0.0,0.0,0.0,42.469168900804284,-21.1667,27.5167,Sua Pan Soda Ash,,African Development Bank Group,Power Africa,http://powerafrica.opendataforafrica.org
+0,105.0,0.0,MUS,Mauritius,Coal,,,,WRI1023126,0.0,0.0,0.0,0.0,855.2036199095023,-20.4728,57.6274,Savannah Estate,,African Development Bank Group,Power Africa,http://powerafrica.opendataforafrica.org
+0,35.0,0.0,MUS,Mauritius,Coal,,,,WRI1023114,0.0,0.0,0.0,0.0,285.06787330316746,-20.48,57.55,Ctds,,African Development Bank Group,Power Africa,http://powerafrica.opendataforafrica.org
+0,14.7,0.0,MUS,Mauritius,Coal,,,,WRI1023129,0.0,0.0,0.0,0.0,119.72850678733032,-20.5079,57.5426,Union St Aubin,,African Development Bank Group,Power Africa,http://powerafrica.opendataforafrica.org
+0,120.0,0.0,MDG,Madagascar,Coal,,,,WRI1023098,0.0,0.0,0.0,0.0,0.0,-18.8356,48.3125,Ambatovy,,African Development Bank Group,WRI,http://powerafrica.opendataforafrica.org
+0,37.6,0.0,NER,Niger,Coal,,,,WRI1023139,0.0,0.0,0.0,0.0,494.0,17.2893,7.8392,Anou Araren Mine,,African Development Bank Group,Power Africa,http://powerafrica.opendataforafrica.org
+0,1200.0,1969.0,ZAF,South Africa,Coal,,,,WRI1000123,0.0,0.0,0.0,0.0,7124.827268539843,-26.7695,28.4995,Grootvlei,Eskom,Eskom,WRI,http://www.eskom.co.za/OurCompany/PhotoGallery/Pages/Eskom_Power_Stations.aspx
