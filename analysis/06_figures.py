@@ -92,7 +92,7 @@ for ax in axs:
     ax.axvline(U7, color='k', ls='--', lw=0.8); ax.axvline(U8, color='k', ls='--', lw=0.8)
 axs[0].text(U7, axs[0].get_ylim()[1] * 0.97, 'Unit 7 ', fontsize=8, va='top', ha='right'); axs[0].text(U8, axs[0].get_ylim()[1] * 0.97, ' Unit 8', fontsize=8, va='top')
 fig.align_ylabels(axs); fig.tight_layout()
-fig.savefig(FIG / 'Figure4_hwange_timeseries.png', dpi=300); plt.close(fig)
+(FIG / 'draft_hwange_timeseries.png').unlink(missing_ok=True); fig.savefig(FIG / 'draft_hwange_timeseries.png', dpi=300); plt.close(fig)
 
 # Figure 3: change by plant.
 fig, axs = plt.subplots(1, 2, figsize=(7.5, 5), sharey=True)
@@ -105,7 +105,7 @@ for ax, y, lab in [(axs[0], 'no2_excess', 'NO$_2$'), (axs[1], 'so2_excess', 'SO$
     ax.hlines(pos, pct_lo, pct_hi, color=col, lw=1.2); ax.scatter(c['pct_change'], pos, color=col, s=22, zorder=3)
     ax.axvline(0, color='0.6', lw=0.8); ax.set_xlabel(f'Change in {lab} excess after mid 2023 (%)')
 axs[0].set_yticks(np.arange(len(order))); axs[0].set_yticklabels([short(n) for n in order])
-fig.tight_layout(); fig.savefig(FIG / 'Figure3_plant_change.png', dpi=300); plt.close(fig)
+fig.tight_layout(); (FIG / 'draft_plant_change.png').unlink(missing_ok=True); fig.savefig(FIG / 'draft_plant_change.png', dpi=300); plt.close(fig)
 
 # Figure 4: compound risk.
 fig, axs = plt.subplots(1, 2, figsize=(8, 4.2), gridspec_kw={'width_ratios': [1.1, 1]})
@@ -125,5 +125,5 @@ for i, (col, c) in enumerate([('hazard_score', '#d6604d'), ('exposure_score', '#
 ax.scatter(r.compound_index, pos, color='k', marker='D', s=14, zorder=3, label='Compound index')
 ax.set_yticks(pos); ax.set_yticklabels([short(n) for n in r['name']], fontsize=7)
 ax.set_xlabel('Score (0 to 1)'); ax.legend(fontsize=7, frameon=False, loc='lower right'); ax.set_title('b', loc='left', fontweight='bold')
-fig.tight_layout(); fig.savefig(FIG / 'Figure5_compound_risk.png', dpi=300); plt.close(fig)
+fig.tight_layout(); (FIG / 'draft_compound_scores.png').unlink(missing_ok=True); fig.savefig(FIG / 'draft_compound_scores.png', dpi=300); plt.close(fig)
 print('figures written')

@@ -26,7 +26,12 @@ Requirements: Python 3.13 with `earthengine-api`, `pandas`, `numpy`, `statsmodel
 6. `python analysis/07_union_population.py --project YOUR_PROJECT`: population counted once across buffers
 7. `python analysis/08_fetch_boundaries.py`: geoBoundaries at commit 9469f09
 8. `python analysis/09_plant_rasters.py --project YOUR_PROJECT`: per-plant raster windows
-9. `python analysis/10_gis_maps.py`: maps of the plants, analysis zones and per-plant surfaces
+9. `python analysis/10_gis_maps.py`: population maps and the per-plant atlas
+10. `python analysis/12_thematic_maps.py`: NO2, heat and cell-level compound risk maps
+11. `python analysis/13_regional_maps.py`: regional frontier map and ranked compound risk map
+12. `python analysis/14_charts.py`: plant change and Hwange time series charts
+
+`gis_common.py` holds the shared cartography used by steps 9 to 12.
 
 `01_feasibility.py` is the initial Hwange feasibility check and is kept for transparency.
 

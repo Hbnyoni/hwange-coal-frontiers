@@ -6,6 +6,7 @@ For each detectable plant, a 180 x 180 km window centred on the plant in its loc
   no2_pre.tif     TROPOMI tropospheric NO2, mean July 2018 to February 2023, 1 km (umol m-2)
   no2_post.tif    TROPOMI tropospheric NO2, mean July 2023 to September 2026, 1 km (umol m-2)
   lst_night.tif   MODIS MOD11A2 night land surface temperature, mean 2019 to 2024, 1 km (deg C)
+  access.tif      Malaria Atlas Project travel time to the nearest health facility, 2019, 1 km (minutes)
 Usage: python analysis/09_plant_rasters.py --project YOUR_EARTH_ENGINE_PROJECT
 """
 from pathlib import Path
@@ -31,6 +32,7 @@ layers = {
     'no2_pre': (no2.filterDate('2018-07-01', '2023-03-01').mean().multiply(1e6), 1000),
     'no2_post': (no2.filterDate('2023-07-01', '2026-10-01').mean().multiply(1e6), 1000),
     'lst_night': (lst.mean().multiply(0.02).subtract(273.15), 1000),
+    'access': (ee.Image('projects/malariaatlasproject/assets/accessibility/accessibility_to_healthcare/2019'), 1000),
 }
 def fetch(r):
     zone = int((r.longitude + 180) // 6) + 1; epsg = 32700 + zone if r.latitude < 0 else 32600 + zone
