@@ -69,4 +69,4 @@ version.
 
 ## Contact
 
-Handsome Bongani Nyoni (nyonih@staff.msu.ac.zw) and Perez Livias Moyo (perezlivias1997@gmail.com).
+Handsome Bongani Nyoni (nyonih@staff.msu.ac.zw) 
