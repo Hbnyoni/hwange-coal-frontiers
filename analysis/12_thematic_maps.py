@@ -4,18 +4,23 @@ map_no2.png       mean tropospheric NO2 column, July 2018 to September 2026 excl
                   (month-weighted mean of the pre and post rasters), one log colour scale for all plants
 map_heat.png      night land surface temperature anomaly, 2019 to 2024: each 1 km cell minus the mean of the plant's
                   40 to 80 km background ring (MODIS MOD11A2)
-map_compound.png  cell-level compound index on the 1 km grid of populated cells (at least 1 person per km2):
+map_compound.png  cell-level compound exposure index on the 1 km grid of populated cells (at least 1 person per km2):
                   NO2, heat anomaly, population density and travel time to health care are converted to percentiles
                   across all populated cells within 50 km of the 17 plants; hazard is the mean of the NO2 and heat
-                  percentiles, exposure the density percentile and vulnerability the travel time percentile; the
-                  index is their geometric mean, as in the plant-level index
+                  percentiles; the index is the geometric mean of hazard, exposure and vulnerability (Eq 5)
 results/compound_cells_by_plant.csv  people within 50 km living in cells in the top decile of the pooled index
+map_risk.png      continuous compound risk surface for every 1 km cell of each window: as map_compound, but exposure is
+                  the population within reach (density smoothed with a Gaussian kernel, sigma 3 km) and percentiles are
+                  pooled over all valid cells of the 17 windows, so risk is mapped everywhere, not only where people live
+results/risk_surface_by_plant.csv  mean and population-weighted risk within 25 km of each plant
 Usage: python analysis/12_thematic_maps.py
 """
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm, TwoSlopeNorm, Normalize
+from scipy.ndimage import gaussian_filter
+from scipy.ndimage import gaussian_filter
 from gis_common import RES, order, read, window_distance, small_multiples
 
 PRE_MONTHS, POST_MONTHS = 56, 39  # July 2018 to February 2023; July 2023 to September 2026
@@ -43,6 +48,7 @@ layers = {}
 for pid in order.id:
     no2, ext = no2_mean(pid); heat, _ = heat_anomaly(pid); acc, _ = read(pid, 'access')
     layers[pid] = {'no2': no2, 'heat': heat, 'dens': density_1km(pid), 'access': acc, 'ext': ext}
+# cell-level compound exposure (Fig 7): populated cells only, percentiles pooled over populated cells within 50 km
 def pooled(key):
     v = np.concatenate([L[key][within50 & (L['dens'] >= 1)] for L in layers.values()])
     return np.sort(v[np.isfinite(v)])
@@ -55,7 +61,7 @@ for pid, L in layers.items():
     idx = (hazard * pct('dens', L['dens']) * pct('access', L['access'])).clip(min=1e-6) ** (1 / 3)
     idx[(L['dens'] < 1) | ~np.isfinite(L['no2']) | ~np.isfinite(L['heat']) | ~np.isfinite(L['access'])] = np.nan
     L['compound'] = idx
-cut = np.nanpercentile(np.concatenate([L['compound'][within50] for L in layers.values()]), 90)
+cut = np.nanpercentile(np.concatenate([L['compound'][within50] for L in layers.values()]), 90)  # top decile of populated cells within 50 km
 rows = []
 for pid, L in layers.items():
     top = within50 & (L['compound'] >= cut)
@@ -65,6 +71,25 @@ cells = pd.DataFrame(rows).set_index('id')
 cells['share_top_decile'] = cells.people_top_decile_cells_50km / cells.people_50km
 cells.round(4).to_csv(RES / 'compound_cells_by_plant.csv')
 print(cells.join(order.set_index('id')['name']).sort_values('people_top_decile_cells_50km', ascending=False).round(3).to_string())
+
+# continuous risk surface: every cell of every window, exposure as population within reach
+for L in layers.values():
+    L['reach'] = gaussian_filter(L['dens'], sigma=3, mode='nearest')  # Gaussian kernel, sigma 3 km
+valid = lambda L: np.isfinite(L['no2']) & np.isfinite(L['heat']) & np.isfinite(L['access'])
+ref_all = {k: np.sort(np.concatenate([L[k][valid(L)] for L in layers.values()])) for k in ('no2', 'heat', 'reach', 'access')}
+pct_all = lambda key, a: np.searchsorted(ref_all[key], a, side='right') / len(ref_all[key])
+within25 = dist <= 25000
+risk_rows = []
+for pid, L in layers.items():
+    hz = (pct_all('no2', L['no2']) + pct_all('heat', L['heat'])) / 2
+    rs = (hz * pct_all('reach', L['reach']) * pct_all('access', L['access'])).clip(min=1e-6) ** (1 / 3)
+    rs[~valid(L)] = np.nan
+    L['risk'] = rs
+    risk_rows.append({'id': pid, 'mean_risk_25km': float(np.nanmean(rs[within25])),
+                      'pop_weighted_risk_25km': float(np.nansum(rs[within25] * L['dens'][within25]) / L['dens'][within25].sum())})
+risk_cells = pd.DataFrame(risk_rows).set_index('id')
+risk_cells.round(4).to_csv(RES / 'risk_surface_by_plant.csv')
+print(risk_cells.join(order.set_index('id')['name']).sort_values('pop_weighted_risk_25km', ascending=False).round(3).to_string())
 
 # NO2
 NO2_CMAP = plt.get_cmap('YlOrRd').copy()
@@ -79,7 +104,12 @@ small_multiples('map_heat.png', heat_anomaly, plt.get_cmap('RdBu_r'), TwoSlopeNo
 # compound
 CMP = plt.get_cmap('YlOrRd').copy()
 small_multiples('map_compound.png', lambda pid: (layers[pid]['compound'], layers[pid]['ext']), CMP, Normalize(0.2, 0.9),
-                'Cell-level compound index (hazard × exposure × vulnerability)',
+                'Cell-level compound exposure index (populated cells), 0 to 1',
                 lambda r: f"Index {r.compound_index:.2f} | {cells.at[r.id, 'people_top_decile_cells_50km'] / 1000:,.1f}k in top-decile cells",
+                extend='both')
+# continuous mapped risk
+small_multiples('map_risk.png', lambda pid: (layers[pid]['risk'], layers[pid]['ext']), plt.get_cmap('YlOrRd'),
+                Normalize(0.1, 0.9), 'Compound risk surface (hazard × exposure × vulnerability), 0 to 1',
+                lambda r: f"Risk within 25 km (pop.-weighted) {risk_cells.at[r.id, 'pop_weighted_risk_25km']:.2f}",
                 extend='both')
 print('thematic maps written')
