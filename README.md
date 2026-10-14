@@ -1,5 +1,7 @@
 # Shifting coal frontiers: compound air pollution and heat risk around sub-Saharan Africa's coal power plants
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23367004.svg)](https://doi.org/10.5281/zenodo.23367004)
+
 Code and derived data for *Shifting coal frontiers: compound air pollution and heat risk around Zimbabwe Zambia and South Africa coal power plants and the 2023 Hwange expansion in Zimbabwe* 
 
 The study screens 25 coal power plants in sub-Saharan Africa with open satellite and population data. For the 17 utility-scale plants with a detectable NO2 signal it combines hazard (TROPOMI NO2 and SO2 excess, GHAP PM2.5, ERA5-Land hot days and MODIS land surface heat), exposure (WorldPop population within 10, 25 and 50 km) and vulnerability (children, older adults and travel time to health care) into a compound risk index, and evaluates the 2023 commissioning of Hwange Units 7 and 8 in Zimbabwe with an interrupted time series and a placebo-in-space difference in differences. No survey, clinical or individual-level data are used.
@@ -63,10 +65,12 @@ Code is released under the MIT licence (`LICENSE`). Derived datasets are release
 
 ## Citation
 
-Please cite the archived release (Zenodo DOI, issued when the GitHub release is published) and the associated article.
-Zenodo archives each GitHub release of this repository automatically; the concept DOI always resolves to the latest
-version.
+Please cite the archived release and the associated article:
+
+Nyoni, H. B., Moyo, P. L., Chinwadzimba, Z., Sibanda, R., & Tigere, D. (2026). *Shifting coal frontiers: Compound air
+pollution and heat risk around sub-Saharan African coal power plants: Code and derived data* (Version 1.0.0)
+[Computer software]. Zenodo. https://doi.org/10.5281/zenodo.23367004
 
 ## Contact
 
-Handsome Bongani Nyoni (nyonih@staff.msu.ac.zw) 
+Handsome Bongani Nyoni (nyonih@staff.msu.ac.zw)

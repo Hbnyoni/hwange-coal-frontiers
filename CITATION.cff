@@ -2,6 +2,7 @@ cff-version: 1.2.0
 message: "If you use this code or data, please cite the archived release and the associated article."
 title: "Shifting coal frontiers: compound air pollution and heat risk around sub-Saharan African coal power plants: code and derived data"
 version: 1.0.0
+doi: 10.5281/zenodo.23367004
 date-released: 2026-10-14
 license: MIT
 repository-code: "https://github.com/Hbnyoni/hwange-coal-frontiers"
