@@ -92,7 +92,8 @@ def window_distance():
     xx, yy = np.meshgrid(c, -c)
     return np.hypot(xx, yy)
 
-def small_multiples(fname, layer, cmap, norm, cbar_label, label, extend='neither', cbar_ticks=None, cbar_ticklabels=None):
+def small_multiples(fname, layer, cmap, norm, cbar_label, label, extend='neither', cbar_ticks=None, cbar_ticklabels=None,
+                    background='#f0f0f0'):
     """One panel per detectable plant in compound-risk order, with shared legend, colour bar, scale and north arrow.
 
     layer(pid) -> (array, extent); label(row) -> text for the lower-left box of each panel.
@@ -103,7 +104,7 @@ def small_multiples(fname, layer, cmap, norm, cbar_label, label, extend='neither
         w, b0, b1 = window_layers(r.id)
         arr, ext = layer(r.id)
         im = ax.imshow(arr, extent=ext, origin='upper', cmap=cmap, norm=norm, interpolation='nearest', zorder=1)
-        ax.set_facecolor('#f0f0f0')
+        ax.set_facecolor(background)
         draw_zones(ax, w, b0, b1)
         ax.set_title(f"{int(r['rank'])}. {short(r['name'])} ({r.country}, {r.capacitymw:,.0f} MW)", fontsize=7.5, pad=2,
                      fontweight='bold' if r.id == HW else 'normal', color='#b2182b' if r.id == HW else 'k')
@@ -117,12 +118,13 @@ def small_multiples(fname, layer, cmap, norm, cbar_label, label, extend='neither
                Line2D([], [], color='0.15', lw=0.8, label='National boundary'),
                Line2D([], [], color='0.55', lw=0.4, label='Province boundary')]
     leg_ax.legend(handles=handles, loc='center', fontsize=6.5, frameon=False)
-    cax = cb_ax.inset_axes([0.1, 0.45, 0.8, 0.12])
+    cax = cb_ax.inset_axes([0.0, 0.45, 1.0, 0.12] if cbar_ticklabels is not None else [0.1, 0.45, 0.8, 0.12])
     cb = fig.colorbar(im, cax=cax, orientation='horizontal', extend=extend)
     if cbar_ticks is not None:
         cb.set_ticks(cbar_ticks)
-        if cbar_ticklabels is not None: cb.set_ticklabels(cbar_ticklabels)
-    cb.set_label(cbar_label, fontsize=6.5); cb.ax.tick_params(labelsize=6)
+        if cbar_ticklabels is not None:
+            cb.set_ticklabels(cbar_ticklabels); cb.ax.tick_params(length=0)
+    cb.set_label(cbar_label, fontsize=6.5); cb.ax.tick_params(labelsize=5.8 if cbar_ticklabels is not None else 6)
     sb_ax.set_xlim(0, 180000); sb_ax.set_ylim(0, 180000); sb_ax.set_aspect('equal')
     scale_bar(sb_ax, 20000, 70000, 100000, '100 km', height=6000)
     north_arrow(sb_ax, 0.85, 0.55, size=0.14)

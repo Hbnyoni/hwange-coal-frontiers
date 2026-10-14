@@ -1,0 +1,6 @@
+class,compound_exposure_upper,mapped_risk_upper
+Very low,0.2953,0.2986
+Low,0.3852,0.3873
+Moderate,0.4648,0.4592
+High,0.5562,0.5408
+Very high,inf,inf

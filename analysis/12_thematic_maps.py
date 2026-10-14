@@ -18,7 +18,7 @@ Usage: python analysis/12_thematic_maps.py
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from matplotlib.colors import LogNorm, TwoSlopeNorm, Normalize
+from matplotlib.colors import LogNorm, TwoSlopeNorm, Normalize, ListedColormap, BoundaryNorm
 from scipy.ndimage import gaussian_filter
 from scipy.ndimage import gaussian_filter
 from gis_common import RES, order, read, window_distance, small_multiples
@@ -102,14 +102,29 @@ small_multiples('map_heat.png', heat_anomaly, plt.get_cmap('RdBu_r'), TwoSlopeNo
                 'Night land surface temperature anomaly, 2019 to 2024 (°C)',
                 lambda r: f"{r.hot_days_popw_25km:.0f} days > 35 °C a year | night {r.lst_night_excess:+.1f} °C".replace('-0.0', '0.0').replace('+0.0', '0.0'), extend='both')
 # compound
-CMP = plt.get_cmap('YlOrRd').copy()
-small_multiples('map_compound.png', lambda pid: (layers[pid]['compound'], layers[pid]['ext']), CMP, Normalize(0.2, 0.9),
-                'Cell-level compound exposure index (populated cells), 0 to 1',
+# risk palette shared by the compound exposure and mapped risk figures: five quintile classes, white-pink-purple
+CLASSES = ['Very\nlow', 'Low', 'Moderate', 'High', 'Very\nhigh']
+RISK_CMAP = ListedColormap(plt.get_cmap('RdPu')(np.linspace(0.2, 0.97, 5)))
+NO_PEOPLE = '#d9d9d9'  # unpopulated cells, distinct from the lightest risk class
+def quintile_norm(values):
+    v = values[np.isfinite(values)]
+    edges = np.quantile(v, [0, 0.2, 0.4, 0.6, 0.8, 1.0]); edges[0], edges[-1] = -np.inf, np.inf
+    return BoundaryNorm(edges, RISK_CMAP.N), edges
+def classed(arr, edges):  # class index 0 to 4, NaN kept
+    out = np.digitize(arr, edges[1:-1]).astype(float); out[~np.isfinite(arr)] = np.nan
+    return out
+CLASS_NORM = BoundaryNorm(np.arange(-0.5, 5.5, 1), RISK_CMAP.N)
+
+_, cmp_edges = quintile_norm(np.concatenate([L['compound'][within50] for L in layers.values()]))
+small_multiples('map_compound.png', lambda pid: (classed(layers[pid]['compound'], cmp_edges), layers[pid]['ext']), RISK_CMAP,
+                CLASS_NORM, 'Compound exposure class (populated cells)',
                 lambda r: f"Index {r.compound_index:.2f} | {cells.at[r.id, 'people_top_decile_cells_50km'] / 1000:,.1f}k in top-decile cells",
-                extend='both')
-# continuous mapped risk
-small_multiples('map_risk.png', lambda pid: (layers[pid]['risk'], layers[pid]['ext']), plt.get_cmap('YlOrRd'),
-                Normalize(0.1, 0.9), 'Compound risk surface (hazard × exposure × vulnerability), 0 to 1',
+                cbar_ticks=range(5), cbar_ticklabels=CLASSES, background=NO_PEOPLE)
+_, risk_edges = quintile_norm(np.concatenate([L['risk'][valid(L)] for L in layers.values()]))
+small_multiples('map_risk.png', lambda pid: (classed(layers[pid]['risk'], risk_edges), layers[pid]['ext']), RISK_CMAP,
+                CLASS_NORM, 'Mapped compound risk class',
                 lambda r: f"Risk within 25 km (pop.-weighted) {risk_cells.at[r.id, 'pop_weighted_risk_25km']:.2f}",
-                extend='both')
+                cbar_ticks=range(5), cbar_ticklabels=CLASSES)
+pd.DataFrame({'class': [c.replace('\n', ' ') for c in CLASSES], 'compound_exposure_upper': cmp_edges[1:], 'mapped_risk_upper': risk_edges[1:]}).round(4).to_csv(
+    RES / 'risk_class_breaks.csv', index=False)
 print('thematic maps written')
